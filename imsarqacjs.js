@@ -11,6 +11,7 @@ const action=['+','-','x','/']
 const out=document.getElementById('screen')
 
 
+
 function clearAll(){
 a='';
 b='';
@@ -28,8 +29,9 @@ document.getElementById('everything').onclick=(event) =>{
         if(b === ''  && sign === ''){
 
         a+=key;
-        out.textContent=a}
-        else if(a!=='' && b =='' && finish){
+        out.textContent=a
+      console.log(a)}
+        else if(a!=='' && b !=='' && finish){
             b=key
             finish=false
             out.textContent=b
@@ -38,6 +40,7 @@ document.getElementById('everything').onclick=(event) =>{
         else {
             b+=key;
             out.textContent=b;
+            console.log(b)
         }
 
     }
@@ -48,26 +51,29 @@ document.getElementById('everything').onclick=(event) =>{
         console.log(sign)
         return
     }
-}
-if(key === 'havasar'){
+
+
+  if(key === "="){
+
     switch (sign) {
         case '+':
-          out = a + b;
+          a =(+a)  + (+b);
           break;
         case '-':
-          out = a - b;
+          a = a - b;
           break;
         case 'x':
-          out = a * b;
+          a = a * b;
           break;
         case '/':
           if (b) {
-            out = a / b;
+            a = a / b;
           } else {
-            out= '0 mi gri';
+            a= '0 mi gri';
           }
           break;
-        
-      
       }
+      finish=true
+      out.textContent=a
+}
 }
